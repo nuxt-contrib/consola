@@ -256,7 +256,8 @@ export function box(text: string, _opts: BoxOpts = {}) {
     opts.style.padding % 2 === 0 ? opts.style.padding : opts.style.padding + 1;
   const height = textLines.length + paddingOffset;
   const width =
-    Math.max(...textLines.map((line) => line.length)) + paddingOffset;
+    Math.max(...textLines.map((line) => stripAnsi(line).length)) +
+    paddingOffset;
   const widthOffset = width + paddingOffset;
 
   const leftSpace =
